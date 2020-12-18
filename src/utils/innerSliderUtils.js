@@ -165,7 +165,6 @@ export const slideHandler = spec => {
     lazyLoad,
     currentSlide,
     centerMode,
-    slidesToScroll,
     slidesToShow,
     useCSS
   } = spec;
@@ -199,8 +198,6 @@ export const slideHandler = spec => {
     if (animationSlide < 0) {
       finalSlide = animationSlide + slideCount;
       if (!infinite) finalSlide = 0;
-      else if (slideCount % slidesToScroll !== 0)
-        finalSlide = slideCount - (slideCount % slidesToScroll);
     } else if (!canGoNext(spec) && animationSlide > currentSlide) {
       animationSlide = finalSlide = currentSlide;
     } else if (centerMode && animationSlide >= slideCount) {
@@ -209,7 +206,6 @@ export const slideHandler = spec => {
     } else if (animationSlide >= slideCount) {
       finalSlide = animationSlide - slideCount;
       if (!infinite) finalSlide = slideCount - slidesToShow;
-      else if (slideCount % slidesToScroll !== 0) finalSlide = 0;
     }
 
     if (!infinite && animationSlide + slidesToShow >= slideCount) {
