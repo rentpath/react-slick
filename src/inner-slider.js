@@ -3,7 +3,7 @@
 import React from "react";
 import initialState from "./initial-state";
 import debounce from "lodash.debounce";
-import classnames from "classnames";
+import clsx from "clsx";
 import {
   getOnDemandLazySlides,
   extractObject,
@@ -609,7 +609,7 @@ export class InnerSlider extends React.Component {
     this.autoPlay("blur");
 
   render = () => {
-    var className = classnames("slick-slider", this.props.className, {
+    var className = clsx("slick-slider", this.props.className, {
       "slick-vertical": this.props.vertical,
       "slick-initialized": true
     });
